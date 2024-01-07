@@ -29,7 +29,9 @@
                TextColor="Red" />
                 <Grid x:Name="GuessGrid" 
               RowSpacing="1" 
-              ColumnSpacing="1">
+              ColumnSpacing="1"
+              HorizontalOptions="Center"
+              WidthRequest="300">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
