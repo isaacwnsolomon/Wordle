@@ -1,5 +1,8 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.IO;
 using System.Net;
+using Microsoft.Maui.Controls;
 
 namespace Wordle
 {
@@ -32,14 +35,16 @@ namespace Wordle
         private void HandleAttempt(object sender, EventArgs e)
         {
             attemptCount++;
-            if (AttemptEntry.Text.ToUpper() == targetWord)
+            var guess = AttemptEntry.Text.ToUpper();  // Moved this up, so it's declared only once
+
+            if (guess == targetWord)
             {
                 ResultLabel.Text = "Congratulations! You've guessed the word.";
             }
-            else if (attemptCount <= 6)
+            else if (attemptCount <= MaxAttempts)
             {
                 ResultLabel.Text = "Incorrect guess, please try again.";
-                var guess = AttemptEntry.Text.ToUpper();
+
                 for (int i = 0; i < guess.Length; i++)
                 {
                     var label = new Label
@@ -49,6 +54,14 @@ namespace Wordle
                         HorizontalOptions = LayoutOptions.Center,
                         VerticalOptions = LayoutOptions.Center,
                     };
+                    // Check the guess against the target word
+                    if (targetWord[i] == guess[i])  // Right letter, right place
+                        label.BackgroundColor = Color.FromRgba(0, 255, 0, 1);
+                    else if (targetWord.Contains(guess[i]))  // Right letter, wrong place
+                        label.BackgroundColor = Color.FromRgba(251, 192, 147, 1);
+                    else  // Wrong letter
+                        label.BackgroundColor = Color.FromRgba(108, 122, 137, 1);
+
                     GuessGrid.Children.Add(label);
                     Grid.SetRow(label, attemptCount - 1);
                     Grid.SetColumn(label, i);
@@ -58,7 +71,8 @@ namespace Wordle
             {
                 ResultLabel.Text = "Sorry, you didn't guess the word in time. The word was " + targetWord;
             }
-            AttemptEntry.Text = "";     // To clear the input field
+
+            AttemptEntry.Text = "";  // To clear the input field
         }
         void FileDownloadCompleted(object sender, AsyncCompletedEventArgs e)
         {
@@ -76,3 +90,4 @@ namespace Wordle
 
     }
 }
+
