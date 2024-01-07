@@ -37,7 +37,7 @@ namespace Wordle
         {
             attemptCount++;
 
-            // Moved this up, so it's declared only once
+
             var guess = AttemptEntry.Text.ToUpper();
 
             // Log the current attempt
@@ -50,31 +50,37 @@ namespace Wordle
             else if (attemptCount <= MaxAttempts)
             {
                 ResultLabel.Text = "Incorrect guess, please try again.";
-
                 for (int i = 0; i < guess.Length; i++)
                 {
+                    //Create a new label for each character
                     var label = new Label
                     {
                         Text = guess[i].ToString(),
                         FontSize = 24,
-                        HorizontalOptions = LayoutOptions.Center,
-                        VerticalOptions = LayoutOptions.Center,
                     };
 
-                    // Check the guess against the target word
+                    //Create a new frame for the label
+                    var frame = new Frame
+                    {
+                        Content = label,
+                        //Rounding the corners
+                        CornerRadius = 10,
+                        //making padding between the frame and the label
+                        Padding = new Thickness(10),
+                    };
+
+                    //Check the guess against the target word 
                     if (targetWord[i] == guess[i])  // Right letter, right place
-                        label.BackgroundColor = Microsoft.Maui.Graphics.Colors.Green;
+                        frame.BackgroundColor = Colors.Green;
                     else if (targetWord.Contains(guess[i]))  // Right letter, wrong place
-                        label.BackgroundColor = Microsoft.Maui.Graphics.Colors.Orange;
+                        frame.BackgroundColor = Colors.Orange;
                     else  // Wrong letter
-                        label.BackgroundColor = Microsoft.Maui.Graphics.Colors.DarkGray;
+                        frame.BackgroundColor = Colors.DarkGray;
 
-                    // Log the current letter result
-                    System.Diagnostics.Debug.WriteLine($"Letter {i}: {guess[i]} - color {label.BackgroundColor}");
-
-                    GuessGrid.Children.Add(label);
-                    Grid.SetRow(label, attemptCount - 1);
-                    Grid.SetColumn(label, i);
+                    //Add the frame to the Grid
+                    GuessGrid.Children.Add(frame);
+                    Grid.SetRow(frame, attemptCount - 1);
+                    Grid.SetColumn(frame, i);
                 }
 
             }
