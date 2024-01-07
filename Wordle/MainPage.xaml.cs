@@ -32,6 +32,9 @@ namespace Wordle
                 // If file exists, set the random target word
                 targetWord = GetRandomWord();
             }
+            AttemptButton.BackgroundColor = Color.FromHex("#F64C72");
+            AttemptButton.TextColor = Microsoft.Maui.Graphics.Colors.White;
+            AttemptButton.CornerRadius = 5;
         }
         private void HandleAttempt(object sender, EventArgs e)
         {
