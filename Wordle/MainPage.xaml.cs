@@ -43,9 +43,7 @@ namespace Wordle
 
             var guess = AttemptEntry.Text.ToUpper();
 
-            // Log the current attempt
-            System.Diagnostics.Debug.WriteLine($"Attempt #{attemptCount}: {guess}");
-
+         
             if (guess == targetWord)
             {
                 ResultLabel.Text = "Congratulations! You've guessed the word.";
@@ -105,6 +103,14 @@ namespace Wordle
             string[] words = File.ReadAllLines(localFilePath);
             int randomIndex = rng.Next(words.Length);
             return words[randomIndex].ToUpper();
+        }
+        public void newGame(object sender, EventArgs e)
+        {
+            targetWord = GetRandomWord();
+            attemptCount = 0;
+            GuessGrid.Children.Clear();
+            ResultLabel.Text = "";
+            AttemptEntry.Text = "";
         }
 
 

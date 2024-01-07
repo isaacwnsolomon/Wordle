@@ -54,6 +54,14 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                 </Grid>
+                <Button 
+    x:Name="NewGameButton"
+    Text="Start New Game"
+Clicked="newGame"
+FontSize="24"
+BackgroundColor="Green"
+TextColor="White"
+Margin="10" />
             </StackLayout>
 
 
