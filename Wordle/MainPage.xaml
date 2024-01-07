@@ -27,7 +27,9 @@
                 FontSize="24"
                 BackgroundColor="Blue"
                 TextColor="White"
-                Margin="10" />
+                Margin="10"
+                    HorizontalOptions="Center"
+WidthRequest="300"/>
                 <Label x:Name="ResultLabel" 
                FontSize="24" 
                HorizontalOptions="CenterAndExpand"
@@ -61,7 +63,9 @@ Clicked="newGame"
 FontSize="24"
 BackgroundColor="Green"
 TextColor="White"
-Margin="10" />
+Margin="10"
+                    HorizontalOptions="Center"
+WidthRequest="300"/>
             </StackLayout>
 
 

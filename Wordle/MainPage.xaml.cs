@@ -38,8 +38,7 @@ namespace Wordle
         }
         private void HandleAttempt(object sender, EventArgs e)
         {
-            attemptCount++;
-
+            
 
             var guess = AttemptEntry.Text.ToUpper();
 
@@ -91,6 +90,8 @@ namespace Wordle
             }
 
             AttemptEntry.Text = "";  // To clear the input field
+            attemptCount++;
+
         }
         void FileDownloadCompleted(object sender, AsyncCompletedEventArgs e)
         {
