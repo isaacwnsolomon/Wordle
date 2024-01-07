@@ -1,8 +1,5 @@
-﻿using System;
-using System.ComponentModel;
-using System.IO;
+﻿using System.ComponentModel;
 using System.Net;
-using Microsoft.Maui.Controls;
 
 
 namespace Wordle
@@ -38,11 +35,11 @@ namespace Wordle
         }
         private void HandleAttempt(object sender, EventArgs e)
         {
-            
+
 
             var guess = AttemptEntry.Text.ToUpper();
 
-         
+
             if (guess == targetWord)
             {
                 ResultLabel.Text = "Congratulations! You've guessed the word.";
@@ -79,7 +76,7 @@ namespace Wordle
 
                     //Add the frame to the Grid
                     GuessGrid.Children.Add(frame);
-                    Grid.SetRow(frame, attemptCount - 1);
+                    Grid.SetRow(frame, attemptCount);
                     Grid.SetColumn(frame, i);
                 }
 
@@ -118,3 +115,4 @@ namespace Wordle
     }
 }
 
+//Fix user being able to guess more than 6 times 
