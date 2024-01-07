@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using Microsoft.Maui.Controls;
 
+
 namespace Wordle
 {
     public partial class MainPage : ContentPage
@@ -35,7 +36,12 @@ namespace Wordle
         private void HandleAttempt(object sender, EventArgs e)
         {
             attemptCount++;
-            var guess = AttemptEntry.Text.ToUpper();  // Moved this up, so it's declared only once
+
+            // Moved this up, so it's declared only once
+            var guess = AttemptEntry.Text.ToUpper();
+
+            // Log the current attempt
+            System.Diagnostics.Debug.WriteLine($"Attempt #{attemptCount}: {guess}");
 
             if (guess == targetWord)
             {
@@ -54,18 +60,23 @@ namespace Wordle
                         HorizontalOptions = LayoutOptions.Center,
                         VerticalOptions = LayoutOptions.Center,
                     };
+
                     // Check the guess against the target word
                     if (targetWord[i] == guess[i])  // Right letter, right place
-                        label.BackgroundColor = Color.FromRgba(0, 255, 0, 1);
+                        label.BackgroundColor = Microsoft.Maui.Graphics.Colors.Green;
                     else if (targetWord.Contains(guess[i]))  // Right letter, wrong place
-                        label.BackgroundColor = Color.FromRgba(251, 192, 147, 1);
+                        label.BackgroundColor = Microsoft.Maui.Graphics.Colors.Orange;
                     else  // Wrong letter
-                        label.BackgroundColor = Color.FromRgba(108, 122, 137, 1);
+                        label.BackgroundColor = Microsoft.Maui.Graphics.Colors.DarkGray;
+
+                    // Log the current letter result
+                    System.Diagnostics.Debug.WriteLine($"Letter {i}: {guess[i]} - color {label.BackgroundColor}");
 
                     GuessGrid.Children.Add(label);
                     Grid.SetRow(label, attemptCount - 1);
                     Grid.SetColumn(label, i);
                 }
+
             }
             else
             {
