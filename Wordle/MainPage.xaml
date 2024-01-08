@@ -9,17 +9,20 @@
               BackgroundColor="#4C4C6D"
              Padding="{DynamicResource PagePadding}">
             <StackLayout>
+                <!-- This Label represents a title for the page -->
                 <Label Text="Wordle Game" 
                FontSize="32" 
                FontAttributes="Bold"
                HorizontalOptions="CenterAndExpand" 
                TextColor="White"
                        Margin="0,50,0,50"/>
+                <!-- This Entry represents an input field where users can enter their guess -->
                 <Entry x:Name="AttemptEntry" 
                Placeholder="Enter your guess..."
                FontSize="24"
                Margin="10"
                MaxLength="5" />
+                <!-- This Button initiates an attempt to guess the word when clicked -->
                 <Button 
                     x:Name="AttemptButton"
                     Text="Attempt"
@@ -30,16 +33,19 @@
                 Margin="10"
                     HorizontalOptions="Center"
 WidthRequest="300"/>
+                <!-- This Label displays the result of the user's guess -->
                 <Label x:Name="ResultLabel" 
                FontSize="24" 
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"
                TextColor="Red" />
+                <!-- This Grid represents the display for the guesses and their results -->
                 <Grid x:Name="GuessGrid" 
               RowSpacing="1" 
               ColumnSpacing="1"
               HorizontalOptions="Center"
               WidthRequest="300">
+                    <!-- Define the column and row configurations -->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
@@ -56,23 +62,25 @@ WidthRequest="300"/>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                 </Grid>
+                <!-- This Button starts a new game when clicked -->
                 <Button 
-    x:Name="NewGameButton"
-    Text="Start New Game"
-Clicked="newGame"
-FontSize="24"
-BackgroundColor="Green"
-TextColor="White"
-Margin="10"
-                    HorizontalOptions="Center"
-WidthRequest="300"/>
+                    x:Name="NewGameButton"
+                    Text="Start New Game"
+                Clicked="newGame"
+                FontSize="24"
+                BackgroundColor="Green"
+                TextColor="White"
+                Margin="10"
+                 HorizontalOptions="Center"
+                    WidthRequest="300"/>
+                <!-- This Button navigates to the settings page when clicked -->
                 <Button x:Name="SettingsButton" 
-        Text="Settings" 
-        Clicked="OnSettingsButtonClicked" 
-                        FontSize="24"
-BackgroundColor="Green"
-TextColor="White"
-Margin="10"/>
+                  Text="Settings" 
+                Clicked="OnSettingsButtonClicked" 
+                                FontSize="24"
+            BackgroundColor="Green"
+            TextColor="White"
+            Margin="10"/>   
             </StackLayout>
 
 

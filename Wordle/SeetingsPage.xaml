@@ -3,14 +3,18 @@
             x:Class="Wordle.SettingsPage">
 
     <StackLayout Spacing="20">
-
+        <!-- Label for Dark Mode setting -->
         <Label Text="Dark Mode" />
         <Switch x:Name="DarkModeToggle" Toggled="OnDarkModeToggleToggled" />
 
+        <!-- Label for Timer setting -->
         <Label Text="Timer" />
+        <!-- Switch for toggling Timer.
         <Switch x:Name="TimerToggle" Toggled="OnTimerToggleToggled" />
 
         <Label Text="Font Size" />
+         <!-- Slider for adjusting Font Size. 
+       
         <Slider x:Name="FontSizeSlider" Maximum="30" Minimum="10" 
                 ValueChanged="OnFontSizeSliderValueChanged" />
 

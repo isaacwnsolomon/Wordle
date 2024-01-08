@@ -1,12 +1,15 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?> 
+<!-- Start the ContentPage. This is the container for the page content-->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Wordle.PlayerEntry">
 
     <StackLayout>
+        <!-- An Entry field is a single line text input field which is for entering the player's name-->
         <Entry x:Name="PlayerNameEntry"
                Placeholder="Enter your name..." />
 
+        <!-- Button that when clicked will trigger the event 'SaveButtonClicked'-->
         <Button Text="Save"
                 Clicked="SaveButtonClicked" />
     </StackLayout>
