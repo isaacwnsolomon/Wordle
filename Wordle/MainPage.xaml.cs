@@ -7,19 +7,21 @@ namespace Wordle
    
     public partial class MainPage : ContentPage
     {
+        //Declare and initialize variables required
+
         private Random rng = new Random();
         private const int MaxAttempts = 6;
         private string targetWord = "";
         private int attemptCount = 0;
         private string localFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "words.txt");
-        //private string playerName;
+        private string playerName;
 
 
-        public MainPage()
+        public MainPage(string playerName)
         {
             
 
-            //    this.playerName = playerName;
+               this.playerName = playerName;
 
             // Check if file exists in local storage
             if (!File.Exists(localFilePath))
@@ -34,10 +36,12 @@ namespace Wordle
                 // If file exists, set the random target word
                 targetWord = GetRandomWord();
             }
+            //Styles attempt button 
             AttemptButton.BackgroundColor = Color.FromHex("#F64C72");
             AttemptButton.TextColor = Microsoft.Maui.Graphics.Colors.White;
             AttemptButton.CornerRadius = 5;
         }
+        //Function to handle users attempt
         private void HandleAttempt(object sender, EventArgs e)
         {
 
@@ -46,13 +50,15 @@ namespace Wordle
 
             if (guess == targetWord)
             {
-          //      GameSession session = new GameSession("isaac", targetWord, attemptCount);
-            //    GameSession.SaveGameSession(session);
+                //Saves players history
+                GameSession session = new GameSession(playerName, targetWord, attemptCount);
+                GameSession.SaveGameSession(session);
                 ResultLabel.Text = "Congratulations! You've guessed the word.";
             }
             else if (attemptCount <= MaxAttempts)
             {
                 ResultLabel.Text = "Incorrect guess, please try again.";
+                //Goes through each letter of the word
                 for (int i = 0; i < guess.Length; i++)
                 {
                     //Create a new label for each character
@@ -102,12 +108,14 @@ namespace Wordle
             targetWord = GetRandomWord();
         }
 
+        //Picks a random word from the list downloaded
         public string GetRandomWord()
         {
             string[] words = File.ReadAllLines(localFilePath);
             int randomIndex = rng.Next(words.Length);
             return words[randomIndex].ToUpper();
         }
+        //Resets the game
         public void newGame(object sender, EventArgs e)
         {
             targetWord = GetRandomWord();
@@ -115,8 +123,9 @@ namespace Wordle
             GuessGrid.Children.Clear();
             ResultLabel.Text = "";
             AttemptEntry.Text = "";
-        //    List<GameSession> allSessions = GameSession.LoadGameSessions();
-        //    GameSession lastSession = allSessions.Last();
+            //Loads last game session 
+            List<GameSession> allSessions = GameSession.LoadGameSessions();
+            GameSession lastSession = allSessions.Last();
         }
         private void OnSettingsButtonClicked(object sender, EventArgs e)
         {
@@ -129,5 +138,3 @@ namespace Wordle
 
 }
 
-
-//Fix user being able to guess more than 6 times 
