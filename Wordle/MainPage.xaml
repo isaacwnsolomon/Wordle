@@ -66,10 +66,13 @@ TextColor="White"
 Margin="10"
                     HorizontalOptions="Center"
 WidthRequest="300"/>
+                <Button 
+    Text="Player History"
+    Clicked="PlayerHistoryButtonClicked" />
             </StackLayout>
 
 
         </VerticalStackLayout>
     </ScrollView>
-    </ContentPage>
+</ContentPage>
     
