@@ -1,0 +1,19 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+            x:Class="Wordle.SettingsPage">
+
+    <StackLayout Spacing="20">
+
+        <Label Text="Dark Mode" />
+        <Switch x:Name="DarkModeToggle" Toggled="OnDarkModeToggleToggled" />
+
+        <Label Text="Timer" />
+        <Switch x:Name="TimerToggle" Toggled="OnTimerToggleToggled" />
+
+        <Label Text="Font Size" />
+        <Slider x:Name="FontSizeSlider" Maximum="30" Minimum="10" 
+                ValueChanged="OnFontSizeSliderValueChanged" />
+
+    </StackLayout>
+
+</ContentPage>

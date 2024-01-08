@@ -54,13 +54,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="History.xaml.cs">
-	    <DependentUpon>History.xaml</DependentUpon>
+	  <Compile Update="SeetingsPage.xaml.cs">
+	    <DependentUpon>SeetingsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="PlayerEntry.xaml.cs">
+	    <DependentUpon>PlayerEntry.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="History.xaml">
+	  <MauiXaml Update="SeetingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PlayerEntry.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

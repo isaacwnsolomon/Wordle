@@ -1,4 +1,10 @@
-﻿namespace Wordle
+﻿using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
+using Application = Microsoft.Maui.Controls.Application;
+
+
+namespace Wordle
 {
     public partial class App : Application
     {
@@ -6,7 +12,7 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new MainPage();
         }
     }
 }

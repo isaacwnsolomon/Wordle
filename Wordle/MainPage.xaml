@@ -66,9 +66,13 @@ TextColor="White"
 Margin="10"
                     HorizontalOptions="Center"
 WidthRequest="300"/>
-                <Button 
-    Text="Player History"
-    Clicked="PlayerHistoryButtonClicked" />
+                <Button x:Name="SettingsButton" 
+        Text="Settings" 
+        Clicked="OnSettingsButtonClicked" 
+                        FontSize="24"
+BackgroundColor="Green"
+TextColor="White"
+Margin="10"/>
             </StackLayout>
 
 
